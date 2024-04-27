@@ -1,0 +1,9 @@
+.table {
+  max-width: 1500px;
+}
+
+thead,
+td {
+  text-align: center;
+  vertical-align: middle;
+}

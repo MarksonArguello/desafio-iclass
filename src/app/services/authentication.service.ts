@@ -22,7 +22,7 @@ export class AuthenticationService {
       map((response) => {
         localStorage.setItem('token', response.access_token);
 
-        //this.loadFullName();
+        this.loadFullName();
 
         return response;
       }),
@@ -48,5 +48,9 @@ export class AuthenticationService {
 
   getFullName() {
     return JSON.parse(localStorage.getItem('fullName') as string);
+  }
+
+  isLoggedIn() {
+    return this.getToken();
   }
 }

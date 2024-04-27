@@ -1,0 +1,35 @@
+<!-- Button to find all service orders -->
+<button (click)="findByServiceOrderCode('1351949717', 1)">Find All</button>
+
+<!-- Create a bootstrap table to represent all informations about the list of ServiceOrder -->
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th rowspan="2">Código</th>
+      <th colspan="4">Contrato</th>
+      <th>Operadora</th>
+      <th colspan="2">Tipo de Ordem de Serviço</th>
+    </tr>
+    <tr>
+      <th>Código</th>
+      <th>Nome do Titular</th>
+      <th>CPF</th>
+      <th>Email</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Resumo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let serviceOrder of seviceOrderList">
+      <td>{{ serviceOrder.codigo }}</td>
+      <td>{{ serviceOrder.contrato.codigo }}</td>
+      <td>{{ serviceOrder.contrato.nomeTitular }}</td>
+      <td>{{ serviceOrder.contrato.cpf }}</td>
+      <td>{{ serviceOrder.contrato.email }}</td>
+      <td>{{ serviceOrder.operadora.nome }}</td>
+      <td>{{ serviceOrder.tipoOs.descricao }}</td>
+      <td>{{ serviceOrder.tipoOs.resumoTipoOs }}</td>
+    </tr>
+  </tbody>
+</table>
