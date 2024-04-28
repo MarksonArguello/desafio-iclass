@@ -1,7 +1,27 @@
-<!-- Button to find all service orders -->
-<button (click)="findByServiceOrderCode('1351949717', 1)">Find All</button>
+<div class="card shadow-sm">
+  <form [formGroup]="formulario" class="card-body">
+    <h3 class="card-title">Busca de Ordem de Serviço</h3>
+    <div class="row">
+      <div class="col">
+        <label for="serviceOrderCode" class="form-label">Código</label>
+        <input formControlName="serviceOrderCode" class="form-control" type="text" />
+      </div>
+    </div>
 
-<!-- Create a bootstrap table to represent all informations about the list of ServiceOrder -->
+    <div class="row">
+      <div class="col d-flex align-items-end">
+        <div class="d-flex justify-content-evenly w-100">
+          <button *ngIf="!loading" (click)="findByServiceOrderCode()" class="btn btn-primary">Buscar</button>
+          <button *ngIf="loading" class="btn btn-primary" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Buscando...
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
 <table class="table table-bordered">
   <thead>
     <tr>
