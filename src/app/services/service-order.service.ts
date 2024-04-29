@@ -40,7 +40,7 @@ export class ServiceOrderService {
       }
     });
 
-    params = params.set('page', page.toString());
+    params = params.set('pagenumber', page.toString()).set('pagesize', '10');
 
     return this.http.get<PaginatedResponse<ServiceOrder>>(this.API, { params });
   }

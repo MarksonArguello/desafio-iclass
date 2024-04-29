@@ -25,12 +25,12 @@ export class AdvancedSearchComponent {
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-      clusterName: ['', Validators.required],
+      clusterName: ['ICLASS', Validators.required],
       customerName: [''],
       ssn: [''],
       thirdPartyCode: [''],
-      createdDate_begin: [''],
-      createdDate_end: [''],
+      createdDate_begin: ['2024-04-01'],
+      createdDate_end: ['2024-04-30'],
       updatedDate_begin: [''],
       updatedDate_end: [''],
       closedBy: [''],
@@ -90,10 +90,11 @@ export class AdvancedSearchComponent {
   }
 
   get hasRangeDateError() {
-    return (
-      (!this.createdDate_begin?.value || !this.createdDate_begin?.value) &&
-      (!this.updatedDate_begin?.value || !this.updatedDate_end?.value)
-    );
+    const correct =
+      (this.createdDate_begin?.value && this.createdDate_end?.value) ||
+      (this.updatedDate_begin?.value && this.updatedDate_end?.value);
+
+    return !correct;
   }
 
   get tooManyDateRanges() {

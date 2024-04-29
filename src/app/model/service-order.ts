@@ -49,7 +49,6 @@ export interface ServiceOrder {
     data: string;
   };
   valorCobranca: number;
-  coordenadasFechamento: any;
   equipe: {
     login: string;
     tecnico: string;

@@ -1,4 +1,5 @@
 export interface PaginatedResponse<T> {
   objects: T[];
-  hasMoreElements: boolean;
+  totalpages: number;
+  currentpage: number;
 }
