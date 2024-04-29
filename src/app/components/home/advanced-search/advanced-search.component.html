@@ -1,0 +1,133 @@
+<div class="card shadow-sm">
+  <form [formGroup]="formulario" class="card-body">
+    <h3 class="card-title">Busca Avançada de Ordem de Serviço</h3>
+    <div class="row">
+      <div class="col">
+        <label for="clusterName" class="required form-label">Nome do Cluster</label>
+        <input
+          formControlName="clusterName"
+          class="form-control"
+          type="text"
+          [ngClass]="{ 'is-invalid': clusterName?.errors && submitted }"
+          required
+        />
+        <div *ngIf="clusterName?.errors?.['required']" class="invalid-feedback">Nome do cluster é obrigatório</div>
+      </div>
+      <div class="col">
+        <label for="customerName" class="form-label">Nome do Cliente</label>
+        <input formControlName="customerName" class="form-control" type="text" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="ssn" class="form-label">SSN</label>
+        <input formControlName="ssn" class="form-control" type="text" />
+      </div>
+      <div class="col">
+        <label for="thirdPartyCode" class="form-label">Código de Terceiros</label>
+        <input formControlName="thirdPartyCode" class="form-control" type="text" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="status" class="form-label">Status</label>
+        <!-- multi checkbox for statuses -->
+        <div class="form-check" *ngFor="let status of statuses">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            checked
+            (change)="status.selected = !status.selected"
+            id="status_{{ status.id }}"
+          />
+          <label class="form-check-label" for="status_{{ status.id }}">{{ status.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <b>Data de Criação</b>
+        <div *ngIf="submitted && hasRangeDateError" class="text-danger">
+          <small>Algum range de datas é obrigatória</small>
+        </div>
+      </div>
+      <div *ngIf="submitted && tooManyDateRanges" class="text-danger">
+        <small>Escolha apenas um range de datas</small>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="createdDate_begin" class="form-label">De</label>
+        <input
+          formControlName="createdDate_begin"
+          class="form-control"
+          type="date"
+          [ngClass]="{ 'is-invalid': submitted && hasRangeDateError && !createdDate_begin?.value }"
+        />
+      </div>
+      <div class="col">
+        <label for="createdDate_end" class="form-label">Até</label>
+        <input
+          formControlName="createdDate_end"
+          class="form-control"
+          type="date"
+          [ngClass]="{ 'is-invalid': submitted && hasRangeDateError && !createdDate_end?.value }"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <b>Data de Atualização</b>
+        <div *ngIf="submitted && hasRangeDateError" class="text-danger">
+          <small>Algum range de datas é obrigatória</small>
+        </div>
+        <div *ngIf="submitted && tooManyDateRanges" class="text-danger">
+          <small>Escolha apenas um range de datas</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="updatedDate_begin" class="form-label">De</label>
+        <input
+          formControlName="updatedDate_begin"
+          class="form-control"
+          type="date"
+          [ngClass]="{ 'is-invalid': submitted && hasRangeDateError && !updatedDate_begin?.value }"
+        />
+      </div>
+      <div class="col">
+        <label for="updatedDate_end" class="form-label">Até</label>
+        <input
+          formControlName="updatedDate_end"
+          class="form-control"
+          type="date"
+          [ngClass]="{ 'is-invalid': submitted && hasRangeDateError && !updatedDate_end?.value }"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="closedBy" class="form-label">Fechado por</label>
+        <input formControlName="closedBy" class="form-control" type="text" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <button *ngIf="!loading" class="btn btn-primary" type="button" (click)="findByFilters()">Buscar</button>
+        <button *ngIf="loading" class="btn btn-primary" type="button" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Carregando...
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
