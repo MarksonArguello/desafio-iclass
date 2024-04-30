@@ -4,7 +4,9 @@
   </div>
   <div *ngIf="isLoggedIn()" class="d-flex align-items-center justify-content-between flex-grow-1 mx-5">
     <div class="welcome">
-      Seja bem-vindo, <strong>{{ username }}</strong>
+      <p *ngIf="username">
+        Seja bem-vindo, <strong>{{ username }}</strong>
+      </p>
     </div>
     <div>
       <button class="btn btn-primary" (click)="logout()">Sair</button>

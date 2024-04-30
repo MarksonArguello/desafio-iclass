@@ -29,6 +29,10 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    if (this.service.isLoggedIn()) {
+      this.router.navigate(['/']);
+    }
   }
 
   logar() {

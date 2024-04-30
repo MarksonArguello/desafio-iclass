@@ -2,7 +2,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button
-        class="accordion-button"
+        class="accordion-button text-uppercase fw-bold fs-4"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#simpleSearch"
@@ -13,20 +13,15 @@
       </button>
     </h2>
     <div id="simpleSearch" class="accordion-collapse collapse show" data-bs-parent="#searchType">
-      <div class="accordion-body">
-        <div class="card shadow-sm">
-          <app-simple-search
-            [loading]="loading"
-            (simpleSearchEvent)="findByServiceOrderCode($event)"
-          ></app-simple-search>
-        </div>
+      <div class="accordion-body d-flex justify-content-center">
+        <app-simple-search [loading]="loading" (simpleSearchEvent)="findByServiceOrderCode($event)"></app-simple-search>
       </div>
     </div>
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button
-        class="accordion-button collapsed"
+        class="accordion-button collapsed text-uppercase fw-bold fs-4"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#advancedSearch"
@@ -37,144 +32,146 @@
       </button>
     </h2>
     <div id="advancedSearch" class="accordion-collapse collapse" data-bs-parent="#searchType">
-      <div class="accordion-body">
+      <div class="accordion-body d-flex justify-content-center">
         <app-advanced-search [loading]="loading" (advancedSearchEvent)="findByFilters($event)"></app-advanced-search>
       </div>
     </div>
   </div>
 </div>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th rowspan="2">Código</th>
-      <th colspan="4">Contrato</th>
-      <th>Operadora</th>
-      <th colspan="2">Credenciada</th>
-      <th colspan="2">Node</th>
-      <th colspan="2">Tipo de Ordem de Serviço</th>
-      <th colspan="8">Endereço</th>
-      <th colspan="2">Status</th>
-      <th colspan="3">Criado por</th>
-      <th colspan="3">Alterado por</th>
-      <th rowspan="2">Valor Cobrança</th>
-      <th colspan="7">Equipe</th>
-      <th rowspan="2">Motivo de Fechamento</th>
-      <th rowspan="2">Responsável</th>
-      <th rowspan="2">Data de Agendamento</th>
-      <th rowspan="2">Data de Solicitação</th>
-      <th rowspan="2">Data SLA</th>
-      <th rowspan="2">Histórico de Status</th>
-      <th rowspan="2">Procedimentos</th>
-      <th rowspan="2">Pesquisas</th>
-      <th rowspan="2">Materiais</th>
-      <th rowspan="2">Ativos</th>
-      <th rowspan="2">Histórico de Ativos</th>
-      <th rowspan="2">Despesas</th>
-    </tr>
-    <tr>
-      <th>Código</th>
-      <th>Nome do Titular</th>
-      <th>CPF</th>
-      <th>Email</th>
-      <th>Nome</th>
-      <th>Código</th>
-      <th>Nome</th>
-      <th>Código</th>
-      <th>Descrição</th>
-      <th>Descrição</th>
-      <th>Resumo</th>
-      <th>Código</th>
-      <th>Número</th>
-      <th>Logradouro</th>
-      <th>Cidade</th>
-      <th>Estado</th>
-      <th>País</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>ID</th>
-      <th>Descrição</th>
-      <th>Nome</th>
-      <th>Login</th>
-      <th>Data</th>
-      <th>Nome</th>
-      <th>Login</th>
-      <th>Data</th>
-      <th>Login</th>
-      <th>Técnico</th>
-      <th>Fone 1</th>
-      <th>Status</th>
-      <th>Tipo de Equipe</th>
-      <th>Email</th>
-      <th>Ativo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let serviceOrder of seviceOrderList">
-      <td>{{ serviceOrder.codigo }}</td>
-      <td>{{ serviceOrder.contrato.codigo }}</td>
-      <td>{{ serviceOrder.contrato.nomeTitular }}</td>
-      <td>{{ serviceOrder.contrato.cpf }}</td>
-      <td>{{ serviceOrder.contrato.email }}</td>
-      <td>{{ serviceOrder.operadora.nome }}</td>
-      <td>{{ serviceOrder.credenciada.codigo }}</td>
-      <td>{{ serviceOrder.credenciada.nome }}</td>
-      <td>{{ serviceOrder.node.codigo }}</td>
-      <td>{{ serviceOrder.node.descricao }}</td>
-      <td>{{ serviceOrder.tipoOs.descricao }}</td>
-      <td>{{ serviceOrder.tipoOs.resumoTipoOs }}</td>
-      <td>{{ serviceOrder.endereco.codigo }}</td>
-      <td>{{ serviceOrder.endereco.numero }}</td>
-      <td>{{ serviceOrder.endereco.logradouro }}</td>
-      <td>{{ serviceOrder.endereco.cidade }}</td>
-      <td>{{ serviceOrder.endereco.estado }}</td>
-      <td>{{ serviceOrder.endereco.pais }}</td>
-      <td>{{ serviceOrder.endereco.latitude }}</td>
-      <td>{{ serviceOrder.endereco.longitude }}</td>
-      <td>{{ serviceOrder.status.id }}</td>
-      <td>{{ serviceOrder.status.descricao }}</td>
-      <td>{{ serviceOrder.criadoPor.nome }}</td>
-      <td>{{ serviceOrder.criadoPor.login }}</td>
-      <td>{{ serviceOrder.criadoPor.data }}</td>
-      <td>{{ serviceOrder.alteradoPor.nome }}</td>
-      <td>{{ serviceOrder.alteradoPor.login }}</td>
-      <td>{{ serviceOrder.alteradoPor.data }}</td>
-      <td>{{ serviceOrder.valorCobranca }}</td>
-      <td>{{ serviceOrder.equipe.login }}</td>
-      <td>{{ serviceOrder.equipe.tecnico }}</td>
-      <td>{{ serviceOrder.equipe.fone1 }}</td>
-      <td>{{ serviceOrder.equipe.status }}</td>
-      <td>{{ serviceOrder.equipe.tipoEquipe }}</td>
-      <td>{{ serviceOrder.equipe.email }}</td>
-      <td>{{ serviceOrder.equipe.ativo }}</td>
-      <td>{{ serviceOrder.motivoFechamento }}</td>
-      <td>{{ serviceOrder.responsavel }}</td>
-      <td>{{ serviceOrder.dataAgendamento }}</td>
-      <td>{{ serviceOrder.dataSolicitacao }}</td>
-      <td>{{ serviceOrder.dataSla }}</td>
-      <td>{{ serviceOrder.historicoStatus }}</td>
-      <td>{{ serviceOrder.procedimentos }}</td>
-      <td>{{ serviceOrder.pesquisas }}</td>
-      <td>{{ serviceOrder.materiais }}</td>
-      <td>{{ serviceOrder.ativos }}</td>
-      <td>{{ serviceOrder.historicoAtivos }}</td>
-      <td>{{ serviceOrder.despesas }}</td>
-    </tr>
-    <tr *ngIf="hasMore && !usingSimpleSearch">
-      <td colspan="49" class="text-start">
-        <button *ngIf="!loading" (click)="loadMore()" class="btn btn-primary">Carregar mais</button>
-        <button *ngIf="loading" class="btn btn-primary" disabled>
-          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          Buscando...
-        </button>
-      </td>
-    </tr>
+<div class="result-table mb-5">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th rowspan="2">Código</th>
+        <th colspan="4">Contrato</th>
+        <th>Operadora</th>
+        <th colspan="2">Credenciada</th>
+        <th colspan="2">Node</th>
+        <th colspan="2">Tipo de Ordem de Serviço</th>
+        <th colspan="8">Endereço</th>
+        <th colspan="2">Status</th>
+        <th colspan="3">Criado por</th>
+        <th colspan="3">Alterado por</th>
+        <th rowspan="2">Valor Cobrança</th>
+        <th colspan="7">Equipe</th>
+        <th rowspan="2">Motivo de Fechamento</th>
+        <th rowspan="2">Responsável</th>
+        <th rowspan="2">Data de Agendamento</th>
+        <th rowspan="2">Data de Solicitação</th>
+        <th rowspan="2">Data SLA</th>
+        <th rowspan="2">Histórico de Status</th>
+        <th rowspan="2">Procedimentos</th>
+        <th rowspan="2">Pesquisas</th>
+        <th rowspan="2">Materiais</th>
+        <th rowspan="2">Ativos</th>
+        <th rowspan="2">Histórico de Ativos</th>
+        <th rowspan="2">Despesas</th>
+      </tr>
+      <tr>
+        <th>Código</th>
+        <th>Nome do Titular</th>
+        <th>CPF</th>
+        <th>Email</th>
+        <th>Nome</th>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Código</th>
+        <th>Descrição</th>
+        <th>Descrição</th>
+        <th>Resumo</th>
+        <th>Código</th>
+        <th>Número</th>
+        <th>Logradouro</th>
+        <th>Cidade</th>
+        <th>Estado</th>
+        <th>País</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Nome</th>
+        <th>Login</th>
+        <th>Data</th>
+        <th>Nome</th>
+        <th>Login</th>
+        <th>Data</th>
+        <th>Login</th>
+        <th>Técnico</th>
+        <th>Fone 1</th>
+        <th>Status</th>
+        <th>Tipo de Equipe</th>
+        <th>Email</th>
+        <th>Ativo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let serviceOrder of seviceOrderList">
+        <td>{{ serviceOrder.codigo }}</td>
+        <td>{{ serviceOrder.contrato.codigo }}</td>
+        <td>{{ serviceOrder.contrato.nomeTitular }}</td>
+        <td>{{ serviceOrder.contrato.cpf }}</td>
+        <td>{{ serviceOrder.contrato.email }}</td>
+        <td>{{ serviceOrder.operadora.nome }}</td>
+        <td>{{ serviceOrder.credenciada.codigo }}</td>
+        <td>{{ serviceOrder.credenciada.nome }}</td>
+        <td>{{ serviceOrder.node.codigo }}</td>
+        <td>{{ serviceOrder.node.descricao }}</td>
+        <td>{{ serviceOrder.tipoOs.descricao }}</td>
+        <td>{{ serviceOrder.tipoOs.resumoTipoOs }}</td>
+        <td>{{ serviceOrder.endereco.codigo }}</td>
+        <td>{{ serviceOrder.endereco.numero }}</td>
+        <td>{{ serviceOrder.endereco.logradouro }}</td>
+        <td>{{ serviceOrder.endereco.cidade }}</td>
+        <td>{{ serviceOrder.endereco.estado }}</td>
+        <td>{{ serviceOrder.endereco.pais }}</td>
+        <td>{{ serviceOrder.endereco.latitude }}</td>
+        <td>{{ serviceOrder.endereco.longitude }}</td>
+        <td>{{ serviceOrder.status.id }}</td>
+        <td>{{ serviceOrder.status.descricao }}</td>
+        <td>{{ serviceOrder.criadoPor.nome }}</td>
+        <td>{{ serviceOrder.criadoPor.login }}</td>
+        <td>{{ serviceOrder.criadoPor.data }}</td>
+        <td>{{ serviceOrder.alteradoPor.nome }}</td>
+        <td>{{ serviceOrder.alteradoPor.login }}</td>
+        <td>{{ serviceOrder.alteradoPor.data }}</td>
+        <td>{{ serviceOrder.valorCobranca }}</td>
+        <td>{{ serviceOrder.equipe.login }}</td>
+        <td>{{ serviceOrder.equipe.tecnico }}</td>
+        <td>{{ serviceOrder.equipe.fone1 }}</td>
+        <td>{{ serviceOrder.equipe.status }}</td>
+        <td>{{ serviceOrder.equipe.tipoEquipe }}</td>
+        <td>{{ serviceOrder.equipe.email }}</td>
+        <td>{{ serviceOrder.equipe.ativo }}</td>
+        <td>{{ serviceOrder.motivoFechamento }}</td>
+        <td>{{ serviceOrder.responsavel }}</td>
+        <td>{{ serviceOrder.dataAgendamento }}</td>
+        <td>{{ serviceOrder.dataSolicitacao }}</td>
+        <td>{{ serviceOrder.dataSla }}</td>
+        <td>{{ serviceOrder.historicoStatus }}</td>
+        <td>{{ serviceOrder.procedimentos }}</td>
+        <td>{{ serviceOrder.pesquisas }}</td>
+        <td>{{ serviceOrder.materiais }}</td>
+        <td>{{ serviceOrder.ativos }}</td>
+        <td>{{ serviceOrder.historicoAtivos }}</td>
+        <td>{{ serviceOrder.despesas }}</td>
+      </tr>
+      <tr *ngIf="hasMore && !usingSimpleSearch">
+        <td colspan="49" class="text-start">
+          <button *ngIf="!loading" (click)="loadMore()" class="btn btn-primary">Carregar mais</button>
+          <button *ngIf="loading" class="btn btn-primary" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Buscando...
+          </button>
+        </td>
+      </tr>
 
-    <tr *ngIf="seviceOrderList.length === 0 && submitted && !loading && !error">
-      <td colspan="49" class="text-start">Nenhum registro encontrado</td>
-    </tr>
-    <tr *ngIf="error">
-      <td colspan="49" class="text-danger text-start fw-bold">{{ error }}</td>
-    </tr>
-  </tbody>
-</table>
+      <tr *ngIf="seviceOrderList.length === 0 && submitted && !loading && !error">
+        <td colspan="49" class="text-start">Nenhum registro encontrado</td>
+      </tr>
+      <tr *ngIf="error">
+        <td colspan="49" class="text-danger text-start fw-bold">{{ error }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
