@@ -10,10 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  username: string;
+  username: string = '';
 
   constructor(private authService: AuthenticationService) {
-    this.username = this.authService.getFullName();
+    this.authService.loadFullName().subscribe((fullName) => {
+      this.username = fullName;
+    });
   }
 
   isLoggedIn() {

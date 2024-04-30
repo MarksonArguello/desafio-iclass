@@ -40,14 +40,13 @@ export class AuthenticationService {
     this.router.navigate(['/login']);
   }
 
-  private loadFullName() {
-    this.http.get<AuthMe>('/api/auth/me').subscribe((auth) => {
-      localStorage.setItem('fullName', JSON.stringify(auth.fullName));
-    });
-  }
-
-  getFullName() {
-    return JSON.parse(localStorage.getItem('fullName') as string);
+  loadFullName(): Observable<string> {
+    return this.http.get<AuthMe>('/api/auth/me').pipe(
+      map((auth) => {
+        localStorage.setItem('fullName', JSON.stringify(auth.fullName));
+        return auth.fullName;
+      }),
+    );
   }
 
   isLoggedIn() {
