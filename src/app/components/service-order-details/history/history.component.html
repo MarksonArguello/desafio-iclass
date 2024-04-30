@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Data</th>
+      <th scope="col">Código</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Comentário</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let history of historyList">
+      <td>{{ history.osStatusId }}</td>
+      <td>{{ history.data }}</td>
+      <td>{{ history.statusOS.codigo }}</td>
+      <td>{{ history.statusOS.descricao }}</td>
+      <td>{{ history.comentario }}</td>
+    </tr>
+  </tbody>
+</table>

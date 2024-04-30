@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ServiceOrder } from '../model/service-order';
 import { PaginatedResponse } from '../model/paginated-response';
 import { AdvancedSearchParams } from '../model/advanced-search-params';
+import { ServiceOrderHistory } from '../model/history';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +44,12 @@ export class ServiceOrderService {
     params = params.set('pagenumber', page.toString()).set('pagesize', '10');
 
     return this.http.get<PaginatedResponse<ServiceOrder>>(this.API, { params });
+  }
+
+  findHistoryByServiceOrderCode(serviceOrderCode: string): Observable<PaginatedResponse<ServiceOrderHistory>> {
+    if (!serviceOrderCode) throw new Error('serviceOrderCode is required');
+
+    return this.http.get<PaginatedResponse<ServiceOrderHistory>>(`${this.API}/${serviceOrderCode}/history`);
   }
 
   private formatDate(date: Date): string {
