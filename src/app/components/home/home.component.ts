@@ -64,23 +64,24 @@ export class HomeComponent {
 
   private findByServiceOrderCodeAndPage(serviceOrderCode: string, page: number) {
     this.seviceOrderService.findByServiceOrderCode(serviceOrderCode, page).subscribe(
-      (paginatedResponse) => this.handleResponse(paginatedResponse),
+      (paginatedResponse) => this.handleResponse(paginatedResponse, page),
       (error) => this.handleError(error),
     );
   }
 
   private findByFiltersAndPage(advancedSearchParams: AdvancedSearchParams, page: number) {
     this.seviceOrderService.findByFilters(advancedSearchParams, page).subscribe(
-      (paginatedResponse) => this.handleResponse(paginatedResponse),
+      (paginatedResponse) => this.handleResponse(paginatedResponse, page),
       (error) => this.handleError(error),
     );
   }
 
-  private handleResponse(paginatedResponse: PaginatedResponse<ServiceOrder>) {
+  private handleResponse(paginatedResponse: PaginatedResponse<ServiceOrder>, page: number) {
     this.loading = false;
     if (paginatedResponse) {
       this.hasMore = true;
-      this.seviceOrderList = paginatedResponse.objects;
+      if (page === 1) this.seviceOrderList = paginatedResponse.objects;
+      else this.seviceOrderList.push(...paginatedResponse.objects);
     } else {
       this.hasMore = false;
     }

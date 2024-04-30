@@ -2,11 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdvancedSearchParams } from '../../../model/advanced-search-params';
+import { ClusterService } from '../../../services/cluster.service';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { Observable, map, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-advanced-search',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatAutocompleteModule, MatInputModule],
   templateUrl: './advanced-search.component.html',
   styleUrl: './advanced-search.component.css',
 })
@@ -16,12 +20,18 @@ export class AdvancedSearchComponent {
   submitted = false;
   @Output() advancedSearchEvent = new EventEmitter<AdvancedSearchParams>();
 
+  filteredClusterNames!: Observable<string[]>;
+  clusterNames: string[] = [];
+
   statuses: Statuses[] = [
     { id: 7, name: 'Encerrada', selected: true },
     { id: 50, name: 'Em aprovação', selected: true },
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private clusterService: ClusterService,
+  ) {}
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
@@ -29,12 +39,25 @@ export class AdvancedSearchComponent {
       customerName: [''],
       ssn: [''],
       thirdPartyCode: [''],
-      createdDate_begin: ['2024-04-01'],
-      createdDate_end: ['2024-04-30'],
+      createdDate_begin: ['2024-01-01'],
+      createdDate_end: ['2024-01-30'],
       updatedDate_begin: [''],
       updatedDate_end: [''],
       closedBy: [''],
     });
+
+    this.clusterService.findAll().subscribe((paginatedResponse) => {
+      this.clusterNames = paginatedResponse.objects.map((cluster) => cluster.nome);
+    });
+
+    this.filteredClusterNames =
+      this.formulario.get('clusterName')?.valueChanges.pipe(
+        startWith(''),
+        map((value) => {
+          const name = typeof value === 'string' ? value : value?.name;
+          return name ? this._filter(name as string) : this.clusterNames.slice();
+        }),
+      ) || new Observable<string[]>();
   }
 
   findByFilters() {
@@ -110,6 +133,12 @@ export class AdvancedSearchComponent {
 
   private invalidForm() {
     return this.formulario.invalid || this.hasRangeDateError || this.tooManyDateRanges;
+  }
+
+  private _filter(name: string): string[] {
+    const filterValue = name.toLowerCase();
+
+    return this.clusterNames.filter((option) => option.toLowerCase().includes(filterValue));
   }
 }
 

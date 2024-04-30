@@ -170,7 +170,7 @@
       </td>
     </tr>
 
-    <tr *ngIf="seviceOrderList.length === 0 && submitted && !loading">
+    <tr *ngIf="seviceOrderList.length === 0 && submitted && !loading && !error">
       <td colspan="49" class="text-start">Nenhum registro encontrado</td>
     </tr>
     <tr *ngIf="error">

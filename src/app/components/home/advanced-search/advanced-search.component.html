@@ -10,7 +10,13 @@
           type="text"
           [ngClass]="{ 'is-invalid': clusterName?.errors && submitted }"
           required
+          [matAutocomplete]="auto"
         />
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (option of filteredClusterNames | async; track option) {
+            <mat-option [value]="option">{{ option }}</mat-option>
+          }
+        </mat-autocomplete>
         <div *ngIf="clusterName?.errors?.['required']" class="invalid-feedback">Nome do cluster é obrigatório</div>
       </div>
       <div class="col">
