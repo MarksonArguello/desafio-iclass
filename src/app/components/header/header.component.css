@@ -1,0 +1,21 @@
+.header {
+  background-color: #444;
+  color: white;
+}
+
+.logo img {
+  width: 156px;
+}
+
+.header button {
+  background-color: #f19a00;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.6em;
+  letter-spacing: 2.92px;
+}
+
+.welcome {
+  font-size: 20px;
+}
