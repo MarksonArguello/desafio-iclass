@@ -5,6 +5,7 @@ import { ServiceOrder } from '../model/service-order';
 import { PaginatedResponse } from '../model/paginated-response';
 import { AdvancedSearchParams } from '../model/advanced-search-params';
 import { ServiceOrderHistory } from '../model/history';
+import { Procedure } from '../model/procedure';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +51,12 @@ export class ServiceOrderService {
     if (!serviceOrderCode) throw new Error('serviceOrderCode is required');
 
     return this.http.get<PaginatedResponse<ServiceOrderHistory>>(`${this.API}/${serviceOrderCode}/history`);
+  }
+
+  findProcedureByServiceOrderCode(serviceOrderCode: string): Observable<PaginatedResponse<Procedure>> {
+    if (!serviceOrderCode) throw new Error('serviceOrderCode is required');
+
+    return this.http.get<PaginatedResponse<Procedure>>(`${this.API}/${serviceOrderCode}/procedures`);
   }
 
   private formatDate(date: Date): string {

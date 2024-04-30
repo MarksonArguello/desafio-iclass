@@ -1,0 +1,49 @@
+<!-- export interface Procedure {
+  procedimentoId: number;
+  descricao: string;
+  resposta: string;
+  codigo: string;
+  data: string;
+  tipo: string;
+  obrigatorio: boolean;
+  editavel: boolean;
+  criadoPor: {
+    nome: string;
+    login: string;
+    data: string;
+  };
+}
+ -->
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Descrição</th>
+      <th>Resposta</th>
+      <th>Código</th>
+      <th>Data</th>
+      <th>Tipo</th>
+      <th>Obrigatório</th>
+      <th>Editável</th>
+      <th>Criado por</th>
+      <th>Login</th>
+      <th>Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let procedure of procedureList">
+      <td>{{ procedure.procedimentoId }}</td>
+      <td>{{ procedure.descricao }}</td>
+      <td>{{ procedure.resposta }}</td>
+      <td>{{ procedure.codigo }}</td>
+      <td>{{ procedure.data }}</td>
+      <td>{{ procedure.tipo }}</td>
+      <td>{{ procedure.obrigatorio }}</td>
+      <td>{{ procedure.editavel }}</td>
+      <td>{{ procedure.criadoPor.nome }}</td>
+      <td>{{ procedure.criadoPor.login }}</td>
+      <td>{{ procedure.criadoPor.data }}</td>
+    </tr>
+  </tbody>
+</table>
