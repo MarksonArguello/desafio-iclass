@@ -16,7 +16,7 @@ export class ServiceOrderService {
 
   constructor(private http: HttpClient) {}
 
-  findByServiceOrderCode(serviceOrderCode: string, page: number): Observable<PaginatedResponse<ServiceOrder>> {
+  findByServiceOrderCode(serviceOrderCode: string, page: number = 1): Observable<PaginatedResponse<ServiceOrder>> {
     if (!serviceOrderCode) throw new Error('serviceOrderCode is required');
 
     const params = new HttpParams().set('serviceOrderCode', serviceOrderCode).set('page', page.toString());

@@ -2,6 +2,7 @@ export interface ServiceOrder {
   id: number;
   codigo: string;
   contrato: {
+    observacao: string;
     codigo: string;
     nomeTitular: string;
     segmentacaoClienteId: number;

@@ -1,0 +1,134 @@
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Geral</h2>
+    <div class="row">
+      <div class="col"><b>Código</b>: {{ serviceOrder.codigo }}</div>
+      <div class="col"><b>Status</b>: {{ serviceOrder.status.descricao }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col"><b>Operadora</b>: {{ serviceOrder.operadora.nome }}</div>
+      <div class="col"><b>Responsável</b>: {{ serviceOrder.responsavel }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col"><b>Valor de cobrança</b>: {{ serviceOrder.valorCobranca }}</div>
+      <div class="col"><b>Motivo de fechamento</b>: {{ serviceOrder.motivoFechamento }}</div>
+      v
+    </div>
+
+    <div class="row">
+      <div class="col"><b>Data de agendamento</b>: {{ serviceOrder.dataAgendamento }}</div>
+      <div class="col"><b>Data de solicitação</b>: {{ serviceOrder.dataSolicitacao }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Contrato</h2>
+
+    <div class="row">
+      <div class="col"><b>Código</b>: {{ serviceOrder.contrato.codigo }}</div>
+      <div class="col"><b>Nome do titular</b>: {{ serviceOrder.contrato.nomeTitular }}</div>
+      <div class="col"><b>Segmentação do cliente</b>: {{ serviceOrder.contrato.segmentacaoClienteId }}</div>
+    </div>
+    <div class="row">
+      <div class="col"><b>CPF</b>: {{ serviceOrder.contrato.cpf }}</div>
+      <div class="col"><b>Email</b>: {{ serviceOrder.contrato.email }}</div>
+      <div class="col"><b>Observação</b>: {{ serviceOrder.contrato.observacao }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Credenciada</h2>
+
+    <div class="row">
+      <div class="col"><b>Código</b>: {{ serviceOrder.credenciada.codigo }}</div>
+      <div class="col"><b>Nome</b>: {{ serviceOrder.credenciada.nome }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Node</h2>
+
+    <div class="row">
+      <div class="col"><b>Código</b>: {{ serviceOrder.node.codigo }}</div>
+      <div class="col"><b>Descrição</b>: {{ serviceOrder.node.descricao }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Tipo de OS</h2>
+
+    <div class="row">
+      <div class="col"><b>Descrição</b>: {{ serviceOrder.tipoOs.descricao }}</div>
+      <div class="col"><b>Resumo</b>: {{ serviceOrder.tipoOs.resumoTipoOs }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Endereço</h2>
+
+    <div class="row">
+      <div class="col"><b>Código</b>: {{ serviceOrder.endereco.codigo }}</div>
+      <div class="col"><b>Número</b>: {{ serviceOrder.endereco.numero }}</div>
+      <div class="col"><b>Logradouro</b>: {{ serviceOrder.endereco.logradouro }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col"><b>Cidade</b>: {{ serviceOrder.endereco.cidade }}</div>
+      <div class="col"><b>Estado</b>: {{ serviceOrder.endereco.estado }}</div>
+      <div class="col"><b>País</b>: {{ serviceOrder.endereco.pais }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col"><b>Latitude</b>: {{ serviceOrder.endereco.latitude }}</div>
+      <div class="col"><b>Longitude</b>: {{ serviceOrder.endereco.longitude }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Alterações</h2>
+
+    <div class="row">
+      <div class="col"><b>Criado por</b>: {{ serviceOrder.criadoPor.nome }}</div>
+      <div class="col"><b>Login</b>: {{ serviceOrder.criadoPor.login }}</div>
+      <div class="col"><b>Data</b>: {{ serviceOrder.criadoPor.data }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col"><b>Alterado por</b>: {{ serviceOrder.alteradoPor.nome }}</div>
+      <div class="col"><b>Login</b>: {{ serviceOrder.alteradoPor.login }}</div>
+      <div class="col"><b>Data</b>: {{ serviceOrder.alteradoPor.data }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Equipe</h2>
+
+    <div class="row">
+      <div class="col"><b>Login</b>: {{ serviceOrder.equipe.login }}</div>
+      <div class="col"><b>Técnico</b>: {{ serviceOrder.equipe.tecnico }}</div>
+      <div class="col"><b>Fone 1</b>: {{ serviceOrder.equipe.fone1 }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col"><b>Status</b>: {{ serviceOrder.equipe.status }}</div>
+      <div class="col"><b>Tipo de equipe</b>: {{ serviceOrder.equipe.tipoEquipe }}</div>
+      <div class="col"><b>Email</b>: {{ serviceOrder.equipe.email }}</div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@
   <div class="card-body">
     <h2 class="card-title">Detalhes da Ordem de Serviço {{ serviceOrderCode }}</h2>
     <mat-tab-group dynamicHeight>
+      <mat-tab label="Ordem de Serviço"><app-service-order>ng </app-service-order></mat-tab>
       <mat-tab label="História"><app-history></app-history></mat-tab>
       <mat-tab label="Procedimento"><app-procedure></app-procedure></mat-tab>
       <mat-tab label="Materiais"><app-material></app-material></mat-tab>
