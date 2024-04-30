@@ -35,12 +35,12 @@ export class AdvancedSearchComponent {
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-      clusterName: ['ICLASS', Validators.required],
+      clusterName: ['', Validators.required],
       customerName: [''],
       ssn: [''],
       thirdPartyCode: [''],
-      createdDate_begin: ['2024-04-01'],
-      createdDate_end: ['2024-04-30'],
+      createdDate_begin: [''],
+      createdDate_end: [''],
       updatedDate_begin: [''],
       updatedDate_end: [''],
       closedBy: [''],
