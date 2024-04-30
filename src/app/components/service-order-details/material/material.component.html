@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Quantidade</th>
+      <th>Valor do Material</th>
+      <th>Valor Total</th>
+      <th>Código</th>
+      <th>Descrição</th>
+      <th>Unidade de Medida</th>
+      <th>Valor</th>
+      <th>Estoques</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let material of materialList">
+      <td>{{ material.osMaterialId }}</td>
+      <td>{{ material.qtd }}</td>
+      <td>{{ material.valorMaterial }}</td>
+      <td>{{ material.valorTotal }}</td>
+      <td>{{ material.material.codigo }}</td>
+      <td>{{ material.material.descricao }}</td>
+      <td>{{ material.material.unidadeMedida }}</td>
+      <td>{{ material.material.valor }}</td>
+      <td>{{ material.material.estoques }}</td>
+    </tr>
+  </tbody>
+</table>

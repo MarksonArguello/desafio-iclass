@@ -106,7 +106,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let serviceOrder of seviceOrderList">
+      <tr *ngFor="let serviceOrder of seviceOrderList" (click)="redirectToDetails(serviceOrder.codigo)">
         <td>{{ serviceOrder.codigo }}</td>
         <td>{{ serviceOrder.contrato.codigo }}</td>
         <td>{{ serviceOrder.contrato.nomeTitular }}</td>

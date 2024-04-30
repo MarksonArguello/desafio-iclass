@@ -6,6 +6,7 @@ import { PaginatedResponse } from '../model/paginated-response';
 import { AdvancedSearchParams } from '../model/advanced-search-params';
 import { ServiceOrderHistory } from '../model/history';
 import { Procedure } from '../model/procedure';
+import { OsMaterial } from '../model/osmaterial';
 
 @Injectable({
   providedIn: 'root',
@@ -57,6 +58,12 @@ export class ServiceOrderService {
     if (!serviceOrderCode) throw new Error('serviceOrderCode is required');
 
     return this.http.get<PaginatedResponse<Procedure>>(`${this.API}/${serviceOrderCode}/procedures`);
+  }
+
+  findMaterialsByServiceOrderCode(serviceOrderCode: string): Observable<PaginatedResponse<OsMaterial>> {
+    if (!serviceOrderCode) throw new Error('serviceOrderCode is required');
+
+    return this.http.get<PaginatedResponse<OsMaterial>>(`${this.API}/${serviceOrderCode}/materials`);
   }
 
   private formatDate(date: Date): string {

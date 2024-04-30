@@ -7,6 +7,7 @@ import { AdvancedSearchComponent } from './advanced-search/advanced-search.compo
 import { AdvancedSearchParams } from '../../model/advanced-search-params';
 import { SimpleSearchComponent } from './simple-search/simple-search.component';
 import { PaginatedResponse } from '../../model/paginated-response';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -31,12 +32,17 @@ export class HomeComponent {
   constructor(
     private seviceOrderService: ServiceOrderService,
     private formBuilder: FormBuilder,
+    private router: Router,
   ) {}
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
       serviceOrderCode: [''],
     });
+  }
+
+  redirectToDetails(serviceOrderCode: string) {
+    this.router.navigate(['/details', serviceOrderCode]);
   }
 
   findByServiceOrderCode(serviceOrderCode: string) {
